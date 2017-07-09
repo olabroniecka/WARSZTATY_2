@@ -1,6 +1,6 @@
 from mysql.connector import connect
 
-def connect_to_bd():  # cnx, cursor
+def connect_to_db():  # cnx, cursor
     cnx = connect(
         user='root',
         password='coderslab',
@@ -8,8 +8,9 @@ def connect_to_bd():  # cnx, cursor
     )
     cursor = cnx.cursor()
 
-    return cnx.cursor
+    return cnx, cursor
 
-def close_connetcion(cnx, cursor):
+def close_connection(cnx, cursor):
+    cnx.commit()
     cursor.close()
     cnx.close()
